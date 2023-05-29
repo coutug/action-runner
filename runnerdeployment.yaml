@@ -25,12 +25,28 @@
 #     scaleUpFactor: '3'
 #     scaleDownFactor: '0.5'
 
-# apiVersion: actions.summerwind.dev/v1alpha1
-# kind: RunnerDeployment
-# metadata:
-#   name: example-runnerdeploy
-# spec:
-#   replicas: 1
-#   template:
-#     spec:
-#       repository: coutug/action-runner
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: example-runnerdeploy
+spec:
+  template:
+    spec:
+      repository: coutug/action-runner
+---
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: HorizontalRunnerAutoscaler
+metadata:
+  name: example-runner-deployment-autoscaler
+spec:
+  scaleTargetRef:
+    kind: RunnerDeployment
+    name: example-runner-deployment
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: PercentageRunnersBusy
+    scaleUpThreshold: '0.75'
+    scaleDownThreshold: '0.25'
+    scaleUpFactor: '2'
+    scaleDownFactor: '0.5'
