@@ -1,0 +1,28 @@
+values.yaml for ARE setup:
+
+githubURL: https://github.my_enterprise_name.com/api/v3
+githubUploadURL: https://github.my_enterprise_name.com/api/uploads
+runnerGithubURL: https://github.my_enterprise_name.com
+scope:
+  watchNamespace: my-actions-runner-ns
+  singleNamespace: true
+authSecret:
+  create: true
+  github_app_id: my_app_id
+  github_app_installation_id: my_installation_id
+  github_app_private_key: |
+my_private_key
+
+RunnerDeployment yaml:
+
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: my-deployment-name
+  namespace: my-actions-runner-ns
+spec:
+  replicas: 1
+  template:
+    spec:
+      repository: my-org/my-repo
+      image: summerwind/actions-runner:ubuntu-20.04s

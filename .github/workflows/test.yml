@@ -8,8 +8,65 @@ on:
 jobs:
   build:
     runs-on: self-hosted
-
     steps:
       - uses: actions/checkout@v3
       - name: Run a one-line script
-        run: echo Hello, world!
+        run: |
+          echo Hello, world!
+          sleep 4m
+  build2:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run a one-line script
+        run: |
+          echo Hello, world!
+          sleep 4m      
+  build3:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run a one-line script
+        run: |
+          echo Hello, world!
+          sleep 4m
+  build4:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run a one-line script
+        run: |
+          echo Hello, world!
+          sleep 4m
+  build5:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run a one-line script
+        run: |
+          echo Hello, world!
+          sleep 4m
+  build6:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run a one-line script
+        run: |
+          echo Hello, world!
+          sleep 4m      
+  build7:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run a one-line script
+        run: |
+          echo Hello, world!
+          sleep 4m
+  build8:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run a one-line script
+        run: |
+          echo Hello, world!
+          sleep 4m
