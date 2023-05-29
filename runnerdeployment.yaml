@@ -46,7 +46,7 @@ spec:
   maxReplicas: 10
   metrics:
   - type: PercentageRunnersBusy
-    scaleUpThreshold: '0.75'
-    scaleDownThreshold: '0.25'
+    scaleUpThreshold: '0.5'
+    scaleDownThreshold: '0.2'
     scaleUpFactor: '2'
     scaleDownFactor: '0.5'
