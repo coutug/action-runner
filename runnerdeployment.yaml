@@ -21,6 +21,6 @@ spec:
   metrics:
   - type: PercentageRunnersBusy
     scaleUpThreshold: '0.75'
-    scaleDownThreshold: '0.3'
+    scaleDownThreshold: '0.25'
     scaleUpFactor: '3'
     scaleDownFactor: '0.5'
