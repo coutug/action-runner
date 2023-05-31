@@ -2,9 +2,7 @@ name: CI
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ "main" ]
-
+    
 jobs:
   build:
     runs-on: self-hosted
@@ -13,7 +11,7 @@ jobs:
       - name: Run a one-line script
         run: |
           echo Hello, world!
-          sleep 4m
+          sleep 2m
   build2:
     runs-on: self-hosted
     steps:
@@ -21,7 +19,7 @@ jobs:
       - name: Run a one-line script
         run: |
           echo Hello, world!
-          sleep 4m      
+          sleep 2m      
   build3:
     runs-on: self-hosted
     steps:
@@ -29,7 +27,7 @@ jobs:
       - name: Run a one-line script
         run: |
           echo Hello, world!
-          sleep 4m
+          sleep 2m
   build4:
     runs-on: self-hosted
     steps:
@@ -37,7 +35,7 @@ jobs:
       - name: Run a one-line script
         run: |
           echo Hello, world!
-          sleep 4m
+          sleep 2m
   build5:
     runs-on: self-hosted
     steps:
@@ -45,7 +43,7 @@ jobs:
       - name: Run a one-line script
         run: |
           echo Hello, world!
-          sleep 4m
+          sleep 2m
   build6:
     runs-on: self-hosted
     steps:
@@ -53,7 +51,7 @@ jobs:
       - name: Run a one-line script
         run: |
           echo Hello, world!
-          sleep 4m      
+          sleep 2m      
   build7:
     runs-on: self-hosted
     steps:
@@ -61,7 +59,7 @@ jobs:
       - name: Run a one-line script
         run: |
           echo Hello, world!
-          sleep 4m
+          sleep 2m
   build8:
     runs-on: self-hosted
     steps:
@@ -69,4 +67,4 @@ jobs:
       - name: Run a one-line script
         run: |
           echo Hello, world!
-          sleep 4m
+          sleep 2m
