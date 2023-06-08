@@ -1,0 +1,41 @@
+# authSecret:
+#   create: true
+#   github_app_id: '339475'
+#   github_app_installation_id: '37955851'
+#   github_app_private_key: |
+#     -----BEGIN RSA PRIVATE KEY-----
+#     MIIEpAIBAAKCAQEA2apEyNvJke7osnMEeRjXZXk5ypJIPBpwswrOeU4wbK/HhqeS
+#     wYBtJ3iKFc7QQKdEr1DbALdTWhGmhf6cD9VXaPuOx8HVig4Mk2VrUMrdsxmbsXKE
+#     LFeMqRwOI25YgLA063VFz0Bj3HDDImCAzH/DT2Gb5bNWl7KH6+YQkDFqreD4HKek
+#     CiCRk0hzdoK1q5YwErQti7jDRdis3B1PeHVNIuLHRnAnLVdU+Ke1INc9/JsEJGWL
+#     1fnpv3FKNRy0sd8X4r/0E+Db7ezRwU3+nqrHBoc2otWNVIhJPcLaVAJ6rSH5JtJT
+#     stcnb8/KLn45C2CCg9EIxZzPRoRc4IDVln1JcwIDAQABAoIBAQCRWtBGZefM6YNB
+#     r+dbywgEfpjmOxu771g1aFEL1vgljJksxfkN+WprQmbMO2j80/bdMJyfdM1Xx5Ox
+#     xZ6IQEr4E418vmeQouMpB0BMGr1EXiSHslarmeeYAuE6LfUyMvmUB6OPzIsjabYV
+#     3eYFKojOGPvXwBRih1mXYfLLqAR6iha2iVnVkCwMCM17nNMOfCpiH4uOQn5WJRCN
+#     YCOeM80ucanvZHb/lzV0oMzmTBzBxLLFl9msYtlonlq71ORlr59uWTHKk279vxZF
+#     nNhjtSiF4tcUQt+axwETBEZJ2Ar1F3qpQVHsVRxrUn5vq00iEPq0VBWlia3vajK8
+#     5KloJ/QJAoGBAPo4x6rISabyTciRXpa8fmLqus7fptP1Wb97aeT1HXjYwGn2LSV+
+#     kZb+FN5LKAu0/anW5PxrvK2qsF8E9q17Eb1LU9cpiQj0gbJjYyQ7Jx//vwvq9Iq1
+#     F/YVgUKCfvWI/J74Mk8Uhx2mSM+++SuSOqVSBkubb+3DlliI6E2EYz3/AoGBAN6x
+#     BoZo/Vr4vStni9y+9O8KSGi6e5VnsrhGK28/xKHTPuDTZcpyP0r36R13Rkxi7Eae
+#     I4GLbP8WHi4KQJhMvkR8l9wm5R0V3p0JoeMqXLki0+goN6cWVKDxWHxjyFD5qjMx
+#     AYJjjhQjXnpwBjoCMwDQ0MsQr/4yS2/smgh3c9yNAoGABfDbLL7coM4X8q8g48tN
+#     5ONV1BuTRm0I2HcBqKH5NSlQSDPEFqPOqRsXO7/lD4IYk7O6dBPKwwTOczMW+D93
+#     yFrFftJJoqDLg4TAkdelsijMTGgjrjdmfj08eGvIv+Oku9GAwEfofVe5WtVZ7SLn
+#     qY0tARaLrcV7CFcXzN9by9kCgYBR6TeHNRML5TZfwsSVO8AINPYRX5aZi/0W/uh3
+#     ETOYeoVEWT21y3QwdSPP7NF0w2Y5S22v9sLuyQns0WSVIJVTx6hsF/pqSmMJzEM5
+#     tZlJl9/uIuzljrcuQ9fSWTmTX2IVVk9B0LCwA5p62r3PlIOCJ0zFhKvXilRpJNQ7
+#     jQSW+QKBgQCdjI6qOG7jjTQ6F+bApHI9rGR+JUEPFEOrkL/fBflOajDAFh+JSIEC
+#     ZX124DtXrSOe2Lb51w8Q/1IZagNMAg1JsniQMmmMLwdgxoIXVzeMRbJs/rRukwbR
+#     M0wz0qxHflpFeeImFVjPNs8X+aoC9gJkgQ2pVZF7yrO0Is+DyirmRw==
+#     -----END RSA PRIVATE KEY-----
+
+authSecret:
+  create: true
+  github_token: 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
+githubWebhookServer:
+  enabled: true
+
+
+
