@@ -1,0 +1,9 @@
+namespace: actions-runner-controller
+authSecret:
+  create: true
+  github_token: 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
+githubWebhookServer:
+  enabled: true
+
+
+

@@ -7,10 +7,10 @@ metadata:
     cert-manager.io/issuer: "letsencrypt"
 spec:
   ingressClassName: nginx
-  tls:
-  - hosts:
-    - 4225-67-68-241-122.ngrok-free.app
-    secretName: tls-secret
+  # tls:
+  # - hosts:
+  #   - 4225-67-68-241-122.ngrok-free.app
+  #   secretName: tls-secret
   rules:
     - host: 4225-67-68-241-122.ngrok-free.app
       http:
