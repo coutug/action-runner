@@ -8,18 +8,10 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: cert-manager
-  sources:
-    - repoURL: https://charts.jetstack.io
-      chart: cert-manager
-      helm:
-        parameters:
-        - name: "namespace"
-          value: cert-manager
-        - name: "version"
-          value: "v1.12.1"
-        - name: "installCRDs"
-          value: "true"
-          forceString: true
+  source:
+    repoURL: https://github.com/coutug/action-runner.git
+    targetRevision: HEAD
+    path: cert-manager
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
