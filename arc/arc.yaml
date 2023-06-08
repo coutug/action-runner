@@ -4,7 +4,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: arc-actions-runner-controller-github-webhook-server
-  namespace: default
+  namespace: actions-runner-system
   labels:
     helm.sh/chart: actions-runner-controller-0.23.3
     app.kubernetes.io/name: actions-runner-controller
@@ -17,29 +17,13 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: arc-actions-runner-controller
-  namespace: default
+  namespace: actions-runner-system
   labels:
     helm.sh/chart: actions-runner-controller-0.23.3
     app.kubernetes.io/name: actions-runner-controller
     app.kubernetes.io/instance: arc
     app.kubernetes.io/version: "0.27.4"
     app.kubernetes.io/managed-by: Helm
----
-# Source: actions-runner-controller/templates/manager_secrets.yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: controller-manager
-  namespace: default
-  labels:
-    helm.sh/chart: actions-runner-controller-0.23.3
-    app.kubernetes.io/name: actions-runner-controller
-    app.kubernetes.io/instance: arc
-    app.kubernetes.io/version: "0.27.4"
-    app.kubernetes.io/managed-by: Helm
-type: Opaque
-data:
-  github_token: Z2hwX3FQZDhSSU5oMHFYU0dDRUhTZ1hRVGZWN3BEcVZQdzNMV2RPWQ==
 ---
 # Source: actions-runner-controller/templates/auth_proxy_role.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -478,7 +462,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: arc-actions-runner-controller
-  namespace: default
+  namespace: actions-runner-system
 ---
 # Source: actions-runner-controller/templates/githubwebhook.role_binding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -492,7 +476,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: arc-actions-runner-controller-github-webhook-server
-    namespace: default
+    namespace: actions-runner-system
 ---
 # Source: actions-runner-controller/templates/manager_role_binding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -506,14 +490,14 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: arc-actions-runner-controller
-  namespace: default
+  namespace: actions-runner-system
 ---
 # Source: actions-runner-controller/templates/manager_role_binding_secrets.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: arc-actions-runner-controller-manager-secrets
-  namespace: default
+  namespace: actions-runner-system
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -521,7 +505,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: arc-actions-runner-controller
-  namespace: default
+  namespace: actions-runner-system
 ---
 # Source: actions-runner-controller/templates/leader_election_role.yaml
 # permissions to do leader election.
@@ -529,7 +513,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: arc-actions-runner-controller-leader-election
-  namespace: default
+  namespace: actions-runner-system
 rules:
 - apiGroups:
   - ""
@@ -563,7 +547,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: arc-actions-runner-controller-leader-election
-  namespace: default
+  namespace: actions-runner-system
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -571,7 +555,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: arc-actions-runner-controller
-  namespace: default
+  namespace: actions-runner-system
 ---
 # Source: actions-runner-controller/templates/controller.metrics.service.yaml
 apiVersion: v1
@@ -584,7 +568,7 @@ metadata:
     app.kubernetes.io/version: "0.27.4"
     app.kubernetes.io/managed-by: Helm
   name: arc-actions-runner-controller-metrics-service
-  namespace: default
+  namespace: actions-runner-system
 spec:
   ports:
   - name: metrics-port
@@ -599,7 +583,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: arc-actions-runner-controller-github-webhook-server
-  namespace: default
+  namespace: actions-runner-system
   labels:
     helm.sh/chart: actions-runner-controller-0.23.3
     app.kubernetes.io/name: actions-runner-controller
@@ -623,7 +607,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: arc-actions-runner-controller-webhook
-  namespace: default
+  namespace: actions-runner-system
   labels:
     helm.sh/chart: actions-runner-controller-0.23.3
     app.kubernetes.io/name: actions-runner-controller
@@ -646,7 +630,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: arc-actions-runner-controller
-  namespace: default
+  namespace: actions-runner-system
   labels:
     helm.sh/chart: actions-runner-controller-0.23.3
     app.kubernetes.io/name: actions-runner-controller
@@ -763,7 +747,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: arc-actions-runner-controller-github-webhook-server
-  namespace: default
+  namespace: actions-runner-system
   labels:
     helm.sh/chart: actions-runner-controller-0.23.3
     app.kubernetes.io/name: actions-runner-controller
@@ -835,11 +819,11 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: arc-actions-runner-controller-serving-cert
-  namespace: default
+  namespace: actions-runner-system
 spec:
   dnsNames:
-  - arc-actions-runner-controller-webhook.default.svc
-  - arc-actions-runner-controller-webhook.default.svc.cluster.local
+  - arc-actions-runner-controller-webhook.actions-runner-system.svc
+  - arc-actions-runner-controller-webhook.actions-runner-system.svc.cluster.local
   issuerRef:
     kind: Issuer
     name: arc-actions-runner-controller-selfsigned-issuer
@@ -853,7 +837,7 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: arc-actions-runner-controller-selfsigned-issuer
-  namespace: default
+  namespace: actions-runner-system
 spec:
   selfSigned: {}
 ---
@@ -864,14 +848,14 @@ metadata:
   creationTimestamp: null
   name: arc-actions-runner-controller-mutating-webhook-configuration
   annotations:
-    cert-manager.io/inject-ca-from: default/arc-actions-runner-controller-serving-cert
+    cert-manager.io/inject-ca-from: actions-runner-system/arc-actions-runner-controller-serving-cert
 webhooks:
 - admissionReviewVersions:
   - v1beta1
   clientConfig:
     service:
       name: arc-actions-runner-controller-webhook
-      namespace: default
+      namespace: actions-runner-system
       path: /mutate-actions-summerwind-dev-v1alpha1-runner
   failurePolicy: Fail
   name: mutate.runner.actions.summerwind.dev
@@ -892,7 +876,7 @@ webhooks:
   clientConfig:
     service:
       name: arc-actions-runner-controller-webhook
-      namespace: default
+      namespace: actions-runner-system
       path: /mutate-actions-summerwind-dev-v1alpha1-runnerdeployment
   failurePolicy: Fail
   name: mutate.runnerdeployment.actions.summerwind.dev
@@ -913,7 +897,7 @@ webhooks:
   clientConfig:
     service:
       name: arc-actions-runner-controller-webhook
-      namespace: default
+      namespace: actions-runner-system
       path: /mutate-actions-summerwind-dev-v1alpha1-runnerreplicaset
   failurePolicy: Fail
   name: mutate.runnerreplicaset.actions.summerwind.dev
@@ -934,7 +918,7 @@ webhooks:
   clientConfig:
     service:
       name: arc-actions-runner-controller-webhook
-      namespace: default
+      namespace: actions-runner-system
       path: /mutate-runner-set-pod
   failurePolicy: Fail
   name: mutate-runner-pod.webhook.actions.summerwind.dev
@@ -960,14 +944,14 @@ metadata:
   creationTimestamp: null
   name: arc-actions-runner-controller-validating-webhook-configuration
   annotations:
-    cert-manager.io/inject-ca-from: default/arc-actions-runner-controller-serving-cert
+    cert-manager.io/inject-ca-from: actions-runner-system/arc-actions-runner-controller-serving-cert
 webhooks:
 - admissionReviewVersions:
   - v1beta1
   clientConfig:
     service:
       name: arc-actions-runner-controller-webhook
-      namespace: default
+      namespace: actions-runner-system
       path: /validate-actions-summerwind-dev-v1alpha1-runner
   failurePolicy: Fail
   name: validate.runner.actions.summerwind.dev
@@ -988,7 +972,7 @@ webhooks:
   clientConfig:
     service:
       name: arc-actions-runner-controller-webhook
-      namespace: default
+      namespace: actions-runner-system
       path: /validate-actions-summerwind-dev-v1alpha1-runnerdeployment
   failurePolicy: Fail
   name: validate.runnerdeployment.actions.summerwind.dev
@@ -1009,7 +993,7 @@ webhooks:
   clientConfig:
     service:
       name: arc-actions-runner-controller-webhook
-      namespace: default
+      namespace: actions-runner-system
       path: /validate-actions-summerwind-dev-v1alpha1-runnerreplicaset
   failurePolicy: Fail
   name: validate.runnerreplicaset.actions.summerwind.dev
