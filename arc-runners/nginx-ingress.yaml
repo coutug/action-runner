@@ -12,7 +12,7 @@ spec:
   #   - 4225-67-68-241-122.ngrok-free.app
   #   secretName: tls-secret
   rules:
-    - host: 4225-67-68-241-122.ngrok-free.app
+    - host: 80ac-67-68-241-122.ngrok-free.app
       http:
         paths:
           - path: /actions-webhook

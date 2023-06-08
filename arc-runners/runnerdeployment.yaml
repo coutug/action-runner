@@ -13,13 +13,12 @@ metadata:
   name: runner-deployment-autoscaler
   namespace: actions-runner-system
 spec:
-  scaleDownDelaySecondsAfterScaleOut: 300
   minReplicas: 1
-  maxReplicas: 10
+  maxReplicas: 12
   scaleTargetRef:
     kind: RunnerDeployment
     name: runner-deployment
   scaleUpTriggers:
     - githubEvent:
         workflowJob: {}
-      duration: "30m"
+      duration: "60m"
