@@ -9,11 +9,17 @@ spec:
     server: https://kubernetes.default.svc
     namespace: actions-runner-system
   source:
-    repoURL: https://github.com/coutug/action-runner.git
-    targetRevision: HEAD
-    path: arc
+    chart: actions-runner-controller
+    repoURL: https://actions-runner-controller.github.io/actions-runner-controller
+    targetRevision: "0.23.3"
+    helm:
+      releaseName: actions-runner-controller
+      parameters:
+        - name: 'githubWebhookServer.enabled'
+          value: 'true'
   syncPolicy:
     syncOptions:
+    - ServerSideApply=true
     - CreateNamespace=true
     automated:
       prune: true

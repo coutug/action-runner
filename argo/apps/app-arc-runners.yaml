@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
     namespace: actions-runner-system
   source:
-    repoURL: https://actions-runner-controller.github.io/actions-runner-controller
+    repoURL: https://github.com/coutug/action-runner.git
     targetRevision: HEAD
     path: arc-runners
   syncPolicy:

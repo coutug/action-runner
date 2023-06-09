@@ -1,3 +1,0 @@
-namespace: actions-runner-system
-githubWebhookServer:
-  enabled: true

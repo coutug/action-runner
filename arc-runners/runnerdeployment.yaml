@@ -14,7 +14,7 @@ metadata:
   namespace: actions-runner-system
 spec:
   minReplicas: 1
-  maxReplicas: 12
+  maxReplicas: 10
   scaleTargetRef:
     kind: RunnerDeployment
     name: runner-deployment
