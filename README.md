@@ -26,7 +26,7 @@ kubectl create -k arc/
 6. Once everything is up and running, go to the settings of your repository to verify that the runner is registered.
 ![Alt text](images/image.png)
 
-7. Great! You are ready to set up the webhooks from your repo. In the settings, look for webhooks and create a neew one. Make sur to put the correct URL from your domain and endpoint. Put the content type to application/json.
+7. Great! You are ready to set up the webhooks from your repo. In the settings, look for webhooks and create a neew one. Make sur to put the correct URL from your domain and endpoint. Put the content type to application/json. In the events, select the events manuly and only check the 'workflow jobs' as an event.
 ![Alt text](images/image-1.png)
 
 8. Test the thing! Run a workflow from your repo to see if everything is working. You should be able to see the webhooks with a 200 status code and see the jobs running in GitHub. From your cluster, you should see the runners spawn depending on the number of jobs running simmultaneously.
