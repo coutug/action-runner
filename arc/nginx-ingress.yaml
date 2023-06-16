@@ -3,16 +3,10 @@ kind: Ingress
 metadata:
   name: actions-runner-ingress
   namespace: actions-runner-system
-  # annotations:
-  #   cert-manager.io/issuer: "letsencrypt"
 spec:
   ingressClassName: nginx
-  # tls:
-  # - hosts:
-  #   - 4225-67-68-241-122.ngrok-free.app
-  #   secretName: tls-secret
   rules:
-    - host: 80ac-67-68-241-122.ngrok-free.app
+    - host: YOUR_DOMAIN
       http:
         paths:
           - path: /actions-webhook

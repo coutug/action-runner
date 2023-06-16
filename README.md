@@ -1,13 +1,32 @@
-# Selfhosting github actions runner with actions-runner-controller
+# Selfhosting github actions
 
-### Why selfhosting
-Having self-hosted runners means having more control over them. Github runners are limited to a certain amount of resources to execute a workflow. By hosting these runners on our servers, we can allocate the desired amount of resources to the runners. This also allows us to have better visibility into workflow execution. By connecting the runners to Prometheus, we can easily obtain accurate information about them.
+To run this small example, follow those steps.  
 
-### Why actions-runner-controller
-ARC provides dynamic runner management through a Kubernetes cluster. It easily connects to the desired code repositories to create runners on-demand when executing workflows. ARC offers two methods for scaling runners on-demand: polling and webhooks. The webhook method is prioritized in this example as it allows for a much quicker response to scale runners. A minimum number of runners is configured to be ready to quickly execute the initial workflows. For each additional workflow execution request, a new runner is created and started until the maximum number of configured runners is reached. Once the workflows are excecuted, unused pods running are terminated back to the minimum number configured. 
+### Notes
+- For this example, the cluster used was a simple minikube cluster using the ingress addon. To reproduce the same behavior, you will need to install an ingress controller on your cluster.
 
-### Steps
-1. Install cert-manager
-2. Configure PAT or Github App
-3. Install ARC
-4. Deploy the runners
+- For the domain, ngrok was used so that github webhooks could reach the cluster.
+
+## Steps
+
+1. Set up a new cluster.
+
+2. Fork this repo to be able to access the settings (to set up webhooks and make sur 
+the runners are registered).
+
+3. Replace the token value for the arc/secrets/arc-secret.yaml file by a valid PAT in base 64.
+
+4. Replace the domain value for the arc/nginx-ingress.yaml file by a valid domain that will serve as an endpoint for the webhooks.
+
+5. Run the command:
+```
+kubectl create -k arc/
+```
+
+6. Once everything is up and running, go to the settings of your repository to verify that the runner is registered.
+![Alt text](images/image.png)
+
+7. Great! You are ready to set up the webhooks from your repo. In the settings, look for webhooks and create a neew one. Make sur to put the correct URL from your domain and endpoint. Put the content type to application/json.
+![Alt text](images/image-1.png)
+
+8. Test the thing! Run a workflow from your repo to see if everything is working. You should be able to see the webhooks with a 200 status code and see the jobs running in GitHub. From your cluster, you should see the runners spawn depending on the number of jobs running simmultaneously.
